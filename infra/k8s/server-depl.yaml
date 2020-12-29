@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-server-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test-server
+  template:
+    metadata:
+      labels:
+        app: test-server
+    spec:
+      containers:
+        - name: test-server
+          image: sadeghsalesi/test-server
+          env:
+            - name: MONGO_URI
+              value: "mongodb://test-mongo-srv:27017/test"
+            - name: JWT_KEY
+              value: "fwag4ighw4gn4jgnkjgnkj4g4"
+              # valueFrom:
+              #   secretKeyRef:
+              #     name: jwt-secret # the name of the secret we created
+              #     key: JWT_KEY # the key within the secret whose value we will assign to this env variable.
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: test-server-srv
+spec:
+  selector:
+    app: test-server
+  type: ClusterIP
+  ports:
+    - name: test-server
+      protocol: TCP
+      port: 3000
+      targetPort: 3000
