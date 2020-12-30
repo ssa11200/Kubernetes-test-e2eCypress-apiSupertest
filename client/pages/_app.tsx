@@ -1,16 +1,8 @@
 import React from "react";
 import { AppProps, AppContext } from "next/app";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
-//import NProgress from "nprogress";
-//import Router from "next/router";
 import buildClient from "../api/buildClient";
 import { AuthProvider } from "../context/AuthContext";
-
-// Router.events.on("routeChangeStart", () => {
-//   NProgress.start();
-// });
-// Router.events.on("routeChangeComplete", () => NProgress.done());
-// Router.events.on("routeChangeError", () => NProgress.done());
 
 export interface ITheme {
   [index: string]: string;
