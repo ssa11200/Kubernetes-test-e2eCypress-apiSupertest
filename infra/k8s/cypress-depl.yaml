@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-cypress-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test-cypress
+  template:
+    metadata:
+      labels:
+        app: test-cypress
+    spec:
+      containers:
+        - name: test-cypress
+          image: sadeghsalesi/test-cypress
