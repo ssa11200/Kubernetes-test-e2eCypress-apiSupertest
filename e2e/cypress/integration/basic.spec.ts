@@ -1,3 +1,9 @@
 it("open google", () => {
-  cy.visit("http://51.145.126.95");
+  cy.visit("http://ingress-nginx-controller.ingress-nginx.svc.cluster.local");
+  cy.get(".button").click();
+  cy.url().should(
+    "eq",
+    "http://ingress-nginx-controller.ingress-nginx.svc.cluster.local" +
+      "/signup"
+  );
 });

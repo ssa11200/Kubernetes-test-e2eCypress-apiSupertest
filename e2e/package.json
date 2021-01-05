@@ -12,7 +12,7 @@
   "scripts": {
     "wait:url": "npx wait-on http://51.145.126.95",
     "cy:open": "npm run wait:url && cypress open",
-    "cy:run": "cypress run"
+    "cy:run": "cypress run --no-exit"
   },
   "keywords": [],
   "author": "",
