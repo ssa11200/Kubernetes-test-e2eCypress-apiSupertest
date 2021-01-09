@@ -4,7 +4,7 @@ deploy:
   kubectl:
     manifests:
       - ./infra/k8s-dev/*
-      - ./infra/k8s-cypress/*
+      #- ./infra/k8s-cypress/*
 build:
   local:
     push: false

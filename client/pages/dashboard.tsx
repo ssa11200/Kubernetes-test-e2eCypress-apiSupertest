@@ -14,6 +14,7 @@ const DashboardPage: NextPage<IDashboardPageProps> = ({ currentUser }) => {
 };
 
 DashboardPage.getInitialProps = async (context: NextPageContext) => {
+  window.fetch = require("unfetch").default;
   // build preconfigured axios instance depending on whether we are running on the server or in the browser
   const axiosClient = buildClient(context);
   const { data } = await axiosClient.get("/api/users/currentUser");
