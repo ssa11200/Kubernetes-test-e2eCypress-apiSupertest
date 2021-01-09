@@ -29,13 +29,13 @@ build:
             dest: .
           - src: "**/*.js"
             dest: .
-    - image: sadeghsalesi/test-cypress
-      context: e2e
-      docker:
-        dockerfile: Dockerfile
-      sync:
-        manual:
-          - src: "src/**/*.ts"
-            dest: .
-          - src: "**/*.js"
-            dest: .
+    # - image: sadeghsalesi/test-cypress
+    #   context: e2e
+    #   docker:
+    #     dockerfile: Dockerfile
+    #   sync:
+    #     manual:
+    #       - src: "src/**/*.ts"
+    #         dest: .
+    #       - src: "**/*.js"
+    #         dest: .

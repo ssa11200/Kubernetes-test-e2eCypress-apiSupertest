@@ -4,10 +4,7 @@ import "express-async-errors";
 import cookieSession from "cookie-session";
 import { json } from "body-parser";
 
-import { currentUserRouter } from "./components/auth/current-user";
-import { signinRouter } from "./components/auth/signin";
-import { signoutRouter } from "./components/auth/signout";
-import { signupRouter } from "./components/auth/signup";
+import { authRouter } from "./components/auth/auth.routes";
 import { NotFoundError } from "./errors/not-found-error";
 import { errorHandler } from "./middlewares/error-handler";
 
@@ -26,10 +23,7 @@ app.use(
   })
 );
 
-app.use(currentUserRouter);
-app.use(signinRouter);
-app.use(signoutRouter);
-app.use(signupRouter);
+app.use(authRouter);
 
 app.all("*", (req, res, next) => {
   throw new NotFoundError();
