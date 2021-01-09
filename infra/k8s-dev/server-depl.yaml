@@ -20,6 +20,8 @@ spec:
               value: "mongodb://test-mongo-srv:27017/test"
             - name: JWT_KEY
               value: "fwag4ighw4gn4jgnkjgnkj4g4"
+            - name: BASE_URL
+              value: http://localhost
               # valueFrom:
               #   secretKeyRef:
               #     name: jwt-secret # the name of the secret we created

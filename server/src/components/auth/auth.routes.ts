@@ -1,5 +1,5 @@
 import { Router, Request, Response } from "express";
-import { User } from "../../models/user";
+import { User, UserDocument } from "../../models/user";
 import { createToken } from "../../services/createToken";
 import { BadRequestError } from "../../errors/bad-request-error";
 import { validateBody } from "../../middlewares/json-validator";
@@ -22,28 +22,33 @@ declare global {
   }
 }
 
+//only in dev env for cypress testing
 if (process.env.BASE_URL?.includes("localhost")) {
   authRouter.post(
     "/api/users/mock-auth",
+    [body("email").isEmail().withMessage("Valid email is required")],
+    validateRequest,
     async (req: Request, res: Response) => {
-      const { email, name, password } = req.body;
+      const { email } = req.body;
 
-      // check email is not taken
+      let user: UserDocument;
+
+      // check if user exists
       const existingUser = await User.findOne({ email });
 
       if (existingUser) {
-        throw new BadRequestError("Email in use");
+        //return the user if user already exists
+        user = existingUser;
+      } else {
+        // build the user if its a new user
+        user = User.build({
+          email: email,
+          name: "mock-user",
+          password: "password",
+        });
+
+        await user.save();
       }
-
-      // create a user and save (using our custom build method for type safety)
-      // password will be hashed by Mongoose pre hook
-
-      const user = User.build({
-        email,
-        name,
-        password,
-      });
-      await user.save();
 
       const userJwt = createToken(user.toObject());
       // store jwt in session object
@@ -52,7 +57,22 @@ if (process.env.BASE_URL?.includes("localhost")) {
         jwt: userJwt,
       };
 
-      res.status(201).send(user);
+      res.send(user);
+    }
+  );
+}
+
+if (process.env.BASE_URL?.includes("localhost")) {
+  authRouter.delete(
+    "/api/users/mock-auth",
+    async (req: Request, res: Response) => {
+      try {
+        await User.findOneAndDelete({ name: "mock-user" });
+      } catch {
+        throw new BadRequestError("user does not exists");
+      }
+
+      res.status(200);
     }
   );
 }
