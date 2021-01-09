@@ -67,6 +67,9 @@ if (process.env.BASE_URL?.includes("localhost")) {
     "/api/users/mock-auth",
     async (req: Request, res: Response) => {
       try {
+        //delete currentUser in req object, delete session, delete user
+        delete req.currentUser;
+        req.session = null;
         await User.findOneAndDelete({ name: "mock-user" });
       } catch {
         throw new BadRequestError("user does not exists");
