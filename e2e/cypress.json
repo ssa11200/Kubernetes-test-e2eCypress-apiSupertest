@@ -1,1 +1,7 @@
-{}
+{
+  "baseUrl": "http://localhost",
+  "supportFile": "cypress/support/commands.ts",
+  "env": {
+    "BASE_URL": "http://localhost"
+  }
+}

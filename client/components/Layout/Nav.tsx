@@ -49,7 +49,7 @@ const CustomNav = ({ openMenu }: INavProps) => {
   const { currentUser, signout } = useAuthContext();
 
   return (
-    <Spacer>
+    <Spacer id="navbar">
       <Wrapper>
         <Brand
           onClick={() => {
