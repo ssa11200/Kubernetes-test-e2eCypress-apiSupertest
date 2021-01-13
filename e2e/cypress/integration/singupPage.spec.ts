@@ -1,17 +1,15 @@
+import { deleteMockAuth } from "../helpers/delete.mockAuth";
+import mockAuth from "../helpers/mockAuthUser";
+
 export {};
 
 const BaseUrl = Cypress.env("BASE_URL");
 
-const mockAuth = {
-  email: "mock@email.com",
-  name: "mock-user",
-  password: "password",
-};
-
 context("signupPage", () => {
   before(() => {
-    cy.request("DELETE", "/api/users/mock-auth");
+    deleteMockAuth();
   });
+
   beforeEach(() => {
     cy.visit("/signup");
   });
