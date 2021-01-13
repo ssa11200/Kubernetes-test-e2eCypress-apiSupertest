@@ -14,6 +14,10 @@ context("signupPage", () => {
     cy.visit("/signup");
   });
 
+  after(() => {
+    deleteMockAuth();
+  });
+
   it("asserts sign up form elements", () => {
     cy.get("#__next").should("contain", "Sign Up");
     cy.get("form").should("exist");

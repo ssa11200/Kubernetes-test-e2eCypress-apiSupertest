@@ -1,10 +1,12 @@
 import { deleteMockAuth } from "./delete.mockAuth";
 import mockAuth from "./mockAuthUser";
+import { signupMockAuth } from "./signup.mockUser";
 
-export const signupMockAuth = () => {
+export const signinpMockAuth = () => {
   deleteMockAuth();
+  signupMockAuth();
 
-  cy.request("POST", "/api/users/sigin", {
+  cy.request("POST", "/api/users/signin", {
     email: mockAuth.email,
     password: mockAuth.password,
   });

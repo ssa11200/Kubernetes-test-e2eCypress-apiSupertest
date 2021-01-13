@@ -15,6 +15,10 @@ context("signinPage", () => {
     cy.visit("/signin");
   });
 
+  after(() => {
+    deleteMockAuth();
+  });
+
   it("asserts sign in form elements", () => {
     cy.get("#__next").should("contain", "Log In");
     cy.get("form").should("exist");
@@ -39,7 +43,7 @@ context("signinPage", () => {
       .should("have.text", "Password is required");
   });
 
-  it.only("submits the form with mock auth values and goes to dashboard page", () => {
+  it("submits the form with mock auth values and goes to dashboard page", () => {
     signupMockAuth();
     cy.get("form").get("input[name='email']").type(mockAuth.email);
     cy.get("form").get("input[name='password']").type(mockAuth.password);
