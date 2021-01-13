@@ -75,7 +75,7 @@ if (process.env.BASE_URL?.includes("localhost")) {
         throw new BadRequestError("user does not exists");
       }
 
-      res.status(200);
+      res.send(200);
     }
   );
 }
