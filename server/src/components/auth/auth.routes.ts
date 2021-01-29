@@ -23,7 +23,10 @@ declare global {
 }
 
 //only in dev env for cypress testing
-if (process.env.BASE_URL?.includes("localhost")) {
+if (
+  process.env.BASE_URL?.includes("localhost") ||
+  process.env.STAGE === "dev"
+) {
   authRouter.post(
     "/api/users/mock-auth",
     [body("email").isEmail().withMessage("Valid email is required")],
@@ -144,8 +147,6 @@ authRouter.post(
     req.session = {
       jwt: userJwt,
     };
-
-    console.log(userJwt);
 
     res.send(user);
   }

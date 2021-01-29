@@ -22,11 +22,8 @@ spec:
               value: "fwag4ighw4gn4jgnkjgnkj4g4"
             - name: BASE_URL
               value: http://localhost
-              # valueFrom:
-              #   secretKeyRef:
-              #     name: jwt-secret # the name of the secret we created
-              #     key: JWT_KEY # the key within the secret whose value we will assign to this env variable.
-
+            - name: STAGE
+              value: dev
 ---
 apiVersion: v1
 kind: Service

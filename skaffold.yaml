@@ -4,7 +4,7 @@ deploy:
   kubectl:
     manifests:
       - ./infra/k8s-dev/*
-      #- ./infra/k8s-cypress/*
+      - ./infra/k8s-cypress/*
 build:
   local:
     push: false
@@ -29,13 +29,13 @@ build:
             dest: .
           - src: "**/*.js"
             dest: .
-    # - image: sadeghsalesi/test-cypress
-    #   context: e2e
-    #   docker:
-    #     dockerfile: Dockerfile
-    #   sync:
-    #     manual:
-    #       - src: "src/**/*.ts"
-    #         dest: .
-    #       - src: "**/*.js"
-    #         dest: .
+    - image: sadeghsalesi/test-cypress
+      context: e2e
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "src/**/*.ts"
+            dest: .
+          - src: "**/*.js"
+            dest: .

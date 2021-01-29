@@ -10,9 +10,8 @@
     "wait-on": "^5.2.1"
   },
   "scripts": {
-    "wait:url": "npx wait-on http://51.145.126.95",
     "cy:open": "cypress open",
-    "cy:run": "cypress run --no-exit"
+    "cy:run": "cypress run"
   },
   "keywords": [],
   "author": "",

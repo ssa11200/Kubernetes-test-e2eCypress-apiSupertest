@@ -12,9 +12,9 @@
     },
     "password": {
       "type": "string",
-      "min": 5
+      "minLength": 5
     }
   },
-  "required": ["email", "name"],
+  "required": ["email", "name", "password"],
   "additionalProperties": false
 }
