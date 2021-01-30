@@ -18,6 +18,7 @@ context("indexPage", () => {
 
   it("goes to signin page when click on navbar login", () => {
     cy.get("#navbar").contains("a", "Log in").click();
+    cy.location("pathname", { timeout: 8000 }).should("include", "/signin");
     cy.url().should("eq", BaseUrl + "/signin");
   });
 

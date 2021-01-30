@@ -1,11 +1,8 @@
 import { deleteMockAuth } from "../helpers/delete.mockAuth";
-import { signupMockAuth } from "../helpers/signup.mockUser";
 import { signinpMockAuth } from "../helpers/signin.mockAuth";
 import mockAuth from "../helpers/mockAuthUser";
 
 export {};
-
-const BaseUrl = Cypress.env("BASE_URL");
 
 context("signinPage", () => {
   before(() => {

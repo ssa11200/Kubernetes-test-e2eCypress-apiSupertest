@@ -15,3 +15,6 @@ spec:
       containers:
         - name: test-cypress
           image: sadeghsalesi/test-cypress
+          env:
+            - name: INGRESS_URL
+              value: "http://ingress-nginx-controller.ingress-nginx.svc.cluster.local"

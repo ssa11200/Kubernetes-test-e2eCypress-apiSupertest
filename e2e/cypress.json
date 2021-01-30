@@ -2,6 +2,6 @@
   "baseUrl": "http://localhost",
   "supportFile": "cypress/support/commands.ts",
   "env": {
-    "BASE_URL": "http://ingress-nginx-controller.ingress-nginx.svc.cluster.local"
+    "BASE_URL": "http://localhost"
   }
 }

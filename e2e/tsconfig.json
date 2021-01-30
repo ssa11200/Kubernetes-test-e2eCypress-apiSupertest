@@ -2,10 +2,12 @@
   "compilerOptions": {
     "target": "es5",
     "lib": ["es5", "dom"],
-    "types": ["cypress", "cypress-wait-until"],
+    "types": ["cypress", "cypress-wait-until", "node"],
     "esModuleInterop": true,
     "alwaysStrict": true,
-    "strict": true
+    "strict": true,
+    "module": "commonjs",
+    "skipLibCheck": true
   },
-  "include": ["**/*.ts", "./support/index.d.ts"]
+  "include": ["**/*.ts", "cypress/**/*", "global.d.ts"]
 }
