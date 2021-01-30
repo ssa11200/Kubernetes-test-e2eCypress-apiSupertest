@@ -80,11 +80,6 @@ export default class MyDocument extends Document<any> {
           <meta name="theme-color" content="#317EFB" />
         </Head>
         <body>
-          <script
-            async
-            defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9fvOWPLtIjp8LyCivvZTcWJfiastTgoY&libraries=geometry,places"
-          ></script>
           <Main />
           <NextScript />
         </body>
